@@ -113,9 +113,9 @@ routes.post('/signup', (req, res) => {
                 }else {
                     // response.status = 'SUCCESS', 
                     conn.query('SELECT * FROM users WHERE _id = ?', [rows.insertId], (err, rows) => {
-                        response = 'Inserted record ID.' + rows.insertId
-
+                        
                         let response = {}
+                        response = 'Inserted record ID.' + rows.insertId
              
                         if(err) { 
                             response.status = 'ERROR', 
