@@ -34,12 +34,11 @@ routes.get('/signup/:id', (req, res) => {
             let response = {}
  
             if(err) { 
-                response.status = 'ERROR', 
-                response.result = err
-
-                return response;
+                response = err
+                console.log(response)
+                res.status(500).json(response)
             }
-            res.json(rows)
+            res.json(rows[0])
         })
     })
 })
