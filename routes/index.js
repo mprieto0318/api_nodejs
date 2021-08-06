@@ -110,7 +110,6 @@ routes.post('/signup', (req, res) => {
                     res.status(401).send(response)
 
                 }else {
-                    // response.status = 'SUCCESS', 
                     conn.query('SELECT * FROM users WHERE _id = ?', [rows.insertId], (err, rows) => {
                         
                         let response = {}
@@ -205,6 +204,50 @@ routes.put('/:id', (req, res) => {
         })
   
 })
+
+routes.patch('/:id', (req, res) => {
+    req.getConnection((err, conn) => {
+            if(err) return res.send(err)
+
+            conn.query('UPDATE users set ? WHERE _id = ?', [req.body, req.params.id], (err, rows) => {
+                let response = ''
+
+                if(err) { 
+                    response = err
+                    console.log(response)
+                    res.status(500).json(response)
+                } 
+
+                if(rows.length == 0) {
+                    response = 'Record not found to update ID.' + req.params.id
+                    console.log(response)
+                    res.status(401).send(response)
+
+                }else {
+
+                    conn.query('SELECT * FROM users WHERE _id = ?', [req.params.id], (err, rows) => {
+                        
+                        let response = {}
+                        response = 'Record updated ID.' + req.params.id
+             
+                        if(err) { 
+                            response.status = 'ERROR', 
+                            response.result = err
+            
+                            res.status(500).send(response)
+                        }
+                        console.log("MPRIETO rows", rows)
+                        console.log(response)
+
+                        res.status(201).json(rows[0])
+                    })
+                }
+                
+            })
+        })
+  
+})
+
 
 
 
