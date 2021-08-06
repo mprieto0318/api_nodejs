@@ -205,7 +205,7 @@ routes.put('/:id', (req, res) => {
   
 })
 
-routes.patch('/:id', (req, res) => {
+routes.patch('/signup/:id', (req, res) => {
     req.getConnection((err, conn) => {
             if(err) return res.send(err)
 
