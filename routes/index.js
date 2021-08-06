@@ -4,7 +4,7 @@ const routes = express.Router()
 // - - - - - - - - - - - - - - - - - -
 // - - -  GET USERS - - - - - - - 
 // - - - - - - - - - - - - - - - - - -
-routes.get('/', (req, res) => {
+routes.get('/signup', (req, res) => {
  
     req.getConnection((err, conn) => {
         if(err) return res.send(err)
