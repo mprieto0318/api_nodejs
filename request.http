@@ -1,0 +1,38 @@
+###
+GET http://localhost:9000/ HTTP/1.1
+
+###
+DELETE http://localhost:9000/4 HTTP/1.1
+
+###
+PUT http://localhost:9000/6 HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "oscar David",
+    "lastname": "oscar Hernandez",
+    "email": "carlos@gmail.com",
+    "dni": "1029384756",
+    "password": "1234567890"
+}
+
+###
+POST http://localhost:9000/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "juanda@gmail.com",
+    "password": "1234567890"
+}
+
+###
+POST http://localhost:9000/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "paisas Ángel",
+    "lastname": "paisas Méndez",
+    "email": "paisas.miguel0318@gmail.com",
+    "dni": "1015428030",
+    "password": "1234567890"
+}
