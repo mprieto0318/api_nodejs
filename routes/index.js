@@ -126,7 +126,7 @@ routes.post('/signup', (req, res) => {
                         console.log("MPRIETO rows", rows)
                         console.log(response)
 
-                        res.status(201).json(rows)
+                        res.status(201).json(rows[0])
                     })
 
                 }
