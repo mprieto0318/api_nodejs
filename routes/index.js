@@ -43,7 +43,7 @@ routes.post('/', (req, res) => {
                     res.status(500).json(response)
                 } 
 
-                if(rows.affectedRows == 0) {
+                if(rows.length == 0) {
                     response = 'No se pudo insertar el registro.'
                     console.log(response)
                     res.status(401).send(response)
@@ -85,7 +85,7 @@ routes.post('/signup', (req, res) => {
                     res.status(500).json(response)
                 } 
 
-                if(rows.affectedRows == 0) {
+                if(rows.length == 0) {
                     response = 'No se pudo insertar el registro.'
                     console.log(response)
                     res.status(401).send(response)
@@ -124,7 +124,7 @@ routes.delete('/:id', (req, res) => {
                     res.status(500).json(response)
                 } 
 
-                if(rows.affectedRows == 0) {
+                if(rows.length == 0) {
                     response = 'The record to delete was not found ID.' + req.params.id
                     console.log(response)
                     res.status(401).send(response)
@@ -156,7 +156,7 @@ routes.put('/:id', (req, res) => {
                     res.status(500).json(response)
                 } 
 
-                if(rows.affectedRows == 0) {
+                if(rows.length == 0) {
                     response = 'Record not found to update ID.' + req.params.id
                     console.log(response)
                     res.status(401).send(response)
