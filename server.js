@@ -13,11 +13,11 @@ app.set('port', process.env.PORT || 9000)
 // - - -  MIDDLEWARES - - - - - - - 
 // - - - - - - - - - - - - - - - - - -
 const dbOpstions = {
-    host: 'localhost',
+    host: 'remotemysql.com',
     port: 3306,
-    user: 'root',
-    password: '',
-    database: 'concierto_29'
+    user: 'OEnxQ1gPID',
+    password: '4FtZIY7l0D',
+    database: 'OEnxQ1gPID'
 }
 app.use(myConn(mysql, dbOpstions, 'single'))
 

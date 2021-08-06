@@ -30,9 +30,9 @@ POST http://localhost:9000/ HTTP/1.1
 Content-Type: application/json
 
 {
-    "name": "paisas Ángel",
-    "lastname": "paisas Méndez",
-    "email": "paisas.miguel0318@gmail.com",
+    "name": "Miguel Ángel",
+    "lastname": "Angel Méndez",
+    "email": "prieto.miguel0318@gmail.com",
     "dni": "1015428030",
     "password": "1234567890"
 }
