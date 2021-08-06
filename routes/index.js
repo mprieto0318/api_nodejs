@@ -74,7 +74,7 @@ routes.post('/signup', (req, res) => {
 
         try {
             if(err) return res.send(err)
- 
+  
             conn.query('INSERT INTO users set ?', [req.body], (err, rows) => {
 
                 let response = ''

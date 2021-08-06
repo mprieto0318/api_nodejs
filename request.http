@@ -36,3 +36,15 @@ Content-Type: application/json
     "dni": "1015428030",
     "password": "1234567890"
 }
+
+###
+POST https://apimprietonodejs.herokuapp.com/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Manuel",
+    "lastname": "Paez",
+    "email": "Manuel@gmail.com",
+    "dni": "1015428030",
+    "password": "1234567890"
+}
