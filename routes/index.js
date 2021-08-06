@@ -24,6 +24,26 @@ routes.get('/', (req, res) => {
     })
 })
 
+routes.get('/:id', (req, res) => {
+ 
+    req.getConnection((err, conn) => {
+        if(err) return res.send(err)
+
+        conn.query('SELECT * FROM users WHERE _id = ?', [req.params.id], (err, rows) => {
+
+            let response = {}
+ 
+            if(err) { 
+                response.status = 'ERROR', 
+                response.result = err
+
+                return response;
+            }
+            res.json(rows)
+        })
+    })
+})
+
 // - - - - - - - - - - - - - - - - - -
 // - - -  CREATE USER - - - - - - - 
 // - - - - - - - - - - - - - - - - - -
@@ -92,9 +112,23 @@ routes.post('/signup', (req, res) => {
 
                 }else {
                     // response.status = 'SUCCESS', 
-                    response = 'Inserted record ID.' + rows.insertId
-                    console.log(response)
-                    res.status(201).json(response)
+                    conn.query('SELECT * FROM users WHERE _id = ?', [rows.insertId], (err, rows) => {
+                        response = 'Inserted record ID.' + rows.insertId
+
+                        let response = {}
+             
+                        if(err) { 
+                            response.status = 'ERROR', 
+                            response.result = err
+            
+                            res.status(500).send(response)
+                        }
+                        console.log("MPRIETO rows", rows)
+                        console.log(response)
+
+                        res.status(201).json(rows)
+                    })
+
                 }
             })
         }
