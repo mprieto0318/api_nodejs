@@ -65,6 +65,49 @@ routes.post('/', (req, res) => {
    
 })
 
+
+// - - - - - - - - - - - - - - - - - -
+// - - -  CREATE USER - - - - - - - 
+// - - - - - - - - - - - - - - - - - -
+routes.post('/signup', (req, res) => {
+    req.getConnection((err, conn) => {
+
+        try {
+            if(err) return res.send(err)
+ 
+            conn.query('INSERT INTO users set ?', [req.body], (err, rows) => {
+
+                let response = ''
+
+                if(err) { 
+                    response = err
+                    console.log(response)
+                    res.status(500).json(response)
+                } 
+
+                if(rows.affectedRows == 0) {
+                    response = 'No se pudo insertar el registro.'
+                    console.log(response)
+                    res.status(401).send(response)
+
+                }else {
+                    // response.status = 'SUCCESS', 
+                    response = 'Inserted record ID.' + rows.insertId
+                    console.log(response)
+                    res.status(201).json(response)
+                }
+            })
+        }
+        catch (e) {
+          console.log("entering catch block");
+          console.log(e);
+          console.log("leaving catch block");
+        }
+    })
+   
+})
+
+
 // - - - - - - - - - - - - - - - - - -
 // - - -  DELETE USER - - - - - - - 
 // - - - - - - - - - - - - - - - - - -
