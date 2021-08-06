@@ -143,7 +143,7 @@ routes.post('/signup', (req, res) => {
 // - - - - - - - - - - - - - - - - - -
 // - - -  DELETE USER - - - - - - - 
 // - - - - - - - - - - - - - - - - - -
-routes.delete('/:id', (req, res) => {
+routes.delete('/signup/:id', (req, res) => {
     req.getConnection((err, conn) => {
             if(err) return res.send(err)
 
